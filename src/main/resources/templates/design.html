@@ -13,8 +13,36 @@
     <title>Item Design Page</title>
 
     <style>
+        html, body {
+            height: 100%;
+        }
+        html {
+            display: table;
+            margin: auto;
+        }
         .validationError {
             color: red;
+        }
+        body {
+            background-color: #1b1b1b;
+            color: white;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        h1 {
+            color: #ffa31a;
+        }
+        button {
+            background-color: #ffa31a;
+            height: 50px;
+            width: 200px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        input {
+            margin-top: 5px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -72,9 +100,16 @@
             >Price Error
           </span>
         </div>
+        <label for="brands">Choose a brand:</label>
+        <select name="brands" id="brands">
+            <option value="balenciaga">Balenciaga</option>
+            <option value="stoneIsland">Stone Island</option>
+            <option value="dior">Dior</option>
+        </select>
 <!--        <select th:field="*{brandFrom}" class="form-select" aria-label="Brand Selection">-->
 <!--            <option th:each="Brand : ${brands}" th:value="${brand}" th:text="${brand.title}"></option>-->
 <!--        </select>-->
+        <br>
         <button>Add Item</button>
     </form>
 </div>
