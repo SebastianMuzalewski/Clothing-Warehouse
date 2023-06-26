@@ -1,7 +1,7 @@
-CREATE TABLE if NOT EXISTS Clothing (
+CREATE TABLE if NOT EXISTS item (
     id identity,
+    brand_from VARCHAR(50) NOT NULL,
     name VARCHAR(50) NOT NULL,
-    brandFrom VARCHAR(50) NOT NULL,
-    yearCreated NUMERIC NOT NULL,
+    year_created NUMERIC NOT NULL,
     price NUMERIC NOT NULL
 );

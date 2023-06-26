@@ -100,15 +100,17 @@
             >Price Error
           </span>
         </div>
-        <label for="brands">Choose a brand:</label>
-        <select name="brands" id="brands">
-            <option value="balenciaga">Balenciaga</option>
-            <option value="stoneIsland">Stone Island</option>
-            <option value="dior">Dior</option>
+        <label>Choose a brand:</label>
+        <select
+                th:field="*{brandFrom}"
+                class="form-select mt-5 mb-5"
+        >
+            <option
+                    th:each="brand: ${brands}"
+                    th:value="${brand}"
+                    th:text="${brand.title}"
+            />
         </select>
-<!--        <select th:field="*{brandFrom}" class="form-select" aria-label="Brand Selection">-->
-<!--            <option th:each="Brand : ${brands}" th:value="${brand}" th:text="${brand.title}"></option>-->
-<!--        </select>-->
         <br>
         <button>Add Item</button>
     </form>

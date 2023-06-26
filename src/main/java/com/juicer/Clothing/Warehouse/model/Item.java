@@ -4,21 +4,25 @@ import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Data;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
 @Data
 @Builder
+@Table
 public class Item {
+    @Id
     private Long id;
     @NotBlank(message = "Name cannot be blank!")
     private String name;
-    private Brand brandFrom;
     @Min(value = 2021, message = "Year must be greater than 2021!")
     private int yearCreated;
     @Min(value = 1000, message = "The price must be set higher than $1000!")
     private double price;
 
-    public enum Brand {
+    private Brand brandFrom;
 
-        // Temporary names, We can change this shit to be cooler later
+    public enum Brand {
         BALENCIAGA("Balenciaga"), STONE_ISLAND("Stone Island"), DIOR("Dior");
 
         private String title;
