@@ -52,7 +52,7 @@ public class DesignController {
         }
         log.info("Processing item: {}", item);
         itemRepository.save(item);
-        return "redirect:/design";
+        return "redirect:/itemList";
     }
 
 }
