@@ -10,26 +10,18 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
     />
-    <title>Item Design Page</title>
-
+    <title>Design Page</title>
     <style>
-        html, body {
-            height: 100%;
-        }
-        html {
-            display: table;
-            margin: auto;
-        }
         .validationError {
             color: red;
         }
-        body {
+        .design {
             background-color: #1b1b1b;
             color: white;
-            display: table-cell;
-            vertical-align: middle;
+            vertical-align: bottom;
+            height: 100%;
         }
-        h1 {
+        .tTitle {
             color: #ffa31a;
         }
         button {
@@ -44,11 +36,41 @@
             margin-top: 5px;
             margin-bottom: 20px;
         }
+        .topnav {
+          background-color: #333;
+          overflow: hidden;
+          width: 100%;
+        }
+        .topnav a {
+          float: left;
+          color: #ffa31a;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+          border-right: solid #1b1b1b;
+          font-weight: bold;
+        }
+        .topnav a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+        .topnav a.active {
+          background-color: #04AA6D;
+          color: white;
+        }
     </style>
 </head>
-<body>
+<div class ="topnav">
+    <a th:href="@{/}">HOME</a>
+    <a th:href="@{/design}">DESIGN</a>
+    <a th:href="@{/itemList}">ITEM LIST</a>
+    <a th:href="@{/about}">ABOUT</a>
+</div>
+<body class="design">
+<div class="d-flex align-items-center justify-content-center py-5">
 <div>
-    <h1>Add Item to Stock</h1>
+    <h1 class ="tTitle">Add Item to Stock</h1>
     <form method="post" th:object="${item}">
         <div th:if="${#fields.hasErrors()}">
             <span> Please correct the problems below and resubmit. </span>
@@ -114,6 +136,7 @@
         <br>
         <button>Add Item</button>
     </form>
+</div>
 </div>
 </body>
 </html>
