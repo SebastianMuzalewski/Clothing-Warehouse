@@ -11,6 +11,17 @@
             crossorigin="anonymous"
     />
     <style>
+        body{
+            overflow: hidden;
+        }
+        .design {
+            background-color: #1b1b1b;
+            color: white;
+            vertical-align: bottom;
+            height: 100%;
+            margin-right: 10px;
+            margin-left: auto;
+        }
         .validationError {
             color: red;
         }
@@ -22,18 +33,6 @@
         }
         .tTitle {
             color: #ffa31a;
-        }
-        button {
-            background-color: #ffa31a;
-            height: 50px;
-            width: 200px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        input {
-            margin-top: 5px;
-            margin-bottom: 20px;
         }
         .topnav {
           background-color: #333;
@@ -89,6 +88,70 @@
             margin-left: auto;
             float: right;
         }
+        .xqcDonoIcon{
+            width: 450px;
+            height: 400px;
+            float: right;
+            border: 5px solid orange;
+            border-radius: 2%;
+            top: 50%;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-85%);
+            position: absolute;
+            margin-right: 20px;
+        }
+        .description{
+            font-size: 14px;
+            width: 400px;
+            margin: 50px;
+            color: #ffa31a;
+        }
+        .teamTitle{
+            text-align: center;
+            color: #ffa31a;
+        }
+        .imgContainer {
+            display: flex;
+            justify-content: center; /* Added to center the team member section */
+        }
+        .gitSeb {
+            margin: 10px;
+            display: flex;
+            flex-direction: column; /* Added to display h6 below h5 */
+            align-items: center; /* Added to center the elements horizontally */
+        }
+        .gitEilaf {
+            margin: 10px;
+            display: flex;
+            flex-direction: column; /* Added to display h6 below h5 */
+            align-items: center; /* Added to center the elements horizontally */
+        }
+        .gitSeb img {
+            margin-right: 10px;
+        }
+
+        .gitEilaf img {
+            margin-right: 10px;
+        }
+        .imgSeb {
+            width: 150px;
+            height: 150px;
+            border: 2px solid orange;
+            margin: 10px;
+        }
+        .imgEilaf {
+            width: 150px;
+            height: 150px;
+            border: 2px solid orange;
+            margin: 10px;
+        }
+        .name-display {
+            margin-left: 10px;
+            color: #ffa31a;
+        }
         </style>
 </head>
 <div class="topnav">
@@ -98,13 +161,35 @@
     <a th:href="@{/itemList}">ITEM LIST</a>
     <a th:href="@{/about}">ABOUT</a>
 </div>
-<body>
-<img  class="img-resize">
-About page is under construction :/
+<body class="design">
+<section class="description">
+    <h1>Clothing Warehouse</u></h1>
+    <p>Welcome to Clothing Warehouse, your one-stop destination for stylish and affordable clothing.</p>
+    <p>Our mission is to provide high-quality clothing options for fashion enthusiasts at competitive prices. With a wide range of trendy styles, we cater to diverse tastes and preferences.</p>
+    <p>At Clothing Warehouse, we believe that fashion should be accessible to everyone. That's why we offer an extensive collection of clothing items for men, women, and children, ensuring that there's something for everyone in the family.</p>
+    <p>Our dedicated team of designers and stylists work tirelessly to curate the latest fashion trends and bring them to your wardrobe. We take pride in our commitment to quality and customer satisfaction.</p>
+    <p>Thank you for choosing Clothing Warehouse. We hope you enjoy your shopping experience and find the perfect outfits to express your unique style.</p>
+</section>
+    <h5 class="teamTitle"><u>Meet the team:</u></h5>
+<section class="imgContainer">
+<div class="gitSeb">
+    <a href="https://github.com/SebastianMuzalewski">
+        <img src="/images/pngs/pikmin-icon.png" alt="SebsGitHub" class="imgSeb">
+    </a>
+    <h5 class="name-display">SEBASTIAN</h5>
+</div>
+<div class="gitEilaf">
+    <a href="https://github.com/Sniperplank">
+        <img src="/images/pngs/xqc-icon.png" alt="EilafsGitHub" class="imgEilaf">
+    </a>
+    <h5 class="name-display">EILAF</h5>
+</div>
+</section>
+<img src="/images/gifs/xqc-dono.gif" alt="GitHub" class="xqcDonoIcon">
 <footer class="footer">
     <p>&copy;2023 Clothing Warehouse. All rights reserved lol.</p>
     <a href="https://github.com/SebastianMuzalewski/Clothing-Warehouse">
-        <img src="/images/pngs/Octicons-mark-github.svg.png" alt="GitHub" class="gitHubIcon">
+        <img src="/images/pngs/github-icon.png" alt="GitHub" class="gitHubIcon">
     </a>
 </footer>
 </body>
