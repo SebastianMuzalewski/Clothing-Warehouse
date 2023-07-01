@@ -10,7 +10,7 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
     />
-<style>
+    <style>
         .validationError {
             color: red;
         }
@@ -71,16 +71,41 @@
           border-left: solid #808080;
           display: flex;
         }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #ffa31a;
+            padding: 20px;
+            text-align: center;
+            border-top: solid #808080;
+        }
+        .gitHubIcon{
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            margin-left: auto;
+            float: right;
+        }
         </style>
-    </head>
-    <div class ="topnav">
-        <div class="webTitle"> Clothing Warehouse </div>
-        <a th:href="@{/}">HOME</a>
-        <a th:href="@{/design}">DESIGN</a>
-        <a th:href="@{/itemList}">ITEM LIST</a>
-        <a th:href="@{/about}">ABOUT</a>
-    </div>
+</head>
+<div class="topnav">
+    <div class="webTitle"> Clothing Warehouse </div>
+    <a th:href="@{/}">HOME</a>
+    <a th:href="@{/design}">DESIGN</a>
+    <a th:href="@{/itemList}">ITEM LIST</a>
+    <a th:href="@{/about}">ABOUT</a>
+</div>
 <body>
+<img  class="img-resize">
 About page is under construction :/
+<footer class="footer">
+    <p>&copy;2023 Clothing Warehouse. All rights reserved lol.</p>
+    <a href="https://github.com/SebastianMuzalewski/Clothing-Warehouse">
+        <img src="/images/pngs/Octicons-mark-github.svg.png" alt="GitHub" class="gitHubIcon">
+    </a>
+</footer>
 </body>
 </html>
