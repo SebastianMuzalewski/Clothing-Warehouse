@@ -20,6 +20,7 @@
             color: white;
             vertical-align: bottom;
             height: 100%;
+            color: #ffa31a;
         }
         .tTitle {
             color: #ffa31a;
@@ -90,6 +91,33 @@
             margin-left: auto;
             float: right;
         }
+        .designImg,
+        .itemListImg,
+        .aboutImg {
+           float: left;
+           margin: 25px;
+           border: 5px solid orange;
+           border-radius: 10%;
+           width: 150px;
+           height: 150px;
+           transform: translateX(425%);
+        }
+        .itemListImg {
+          margin: 45px 25px 25px;
+        }
+        .image-container {
+            text-align: center;
+            margin: 25px;
+        }
+        .image-label {
+            color: #ffa31a;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .name-display {
+            margin-bottom: 10px;
+            color: #ffa31a;
+        }
         </style>
 </head>
 <div class="topnav">
@@ -99,8 +127,26 @@
     <a th:href="@{/itemList}">ITEM LIST</a>
     <a th:href="@{/about}">ABOUT</a>
 </div>
-<body>
-Home page is under construction :/
+<body class="design">
+<div class="title-container d-flex flex-column align-items-center justify-content-center">
+    <h1 class="py-5">Welcome to the Clothing Warehouse!</h1>
+    <p>What would you like to do:</p>
+</div>
+<div class="image-container">
+<a th:href="@{/design}">
+        <img src="/images/pngs/design.png" alt="DesignPage" class="designImg">
+</a>
+</div>
+<a th:href="@{/itemList}">
+    <div class="image-container">
+        <img src="/images/pngs/itemList.png" alt="ItemListPage" class="itemListImg">
+    </div>
+</a>
+<a th:href="@{/about}">
+    <div class="image-container">
+        <img src="/images/pngs/about.png" alt="AboutPage" class="aboutImg">
+    </div>
+</a>
 <footer class="footer">
     <p>&copy;2023 Clothing Warehouse. All rights reserved lol.</p>
     <a href="https://github.com/SebastianMuzalewski/Clothing-Warehouse">
