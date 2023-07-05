@@ -1,49 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Home Page</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-            crossorigin="anonymous"
-    />
-    <title>Home Page</title>
-<style>
-        .validationError {
-            color: red;
-        }
-        .design {
-            background-color: #1b1b1b;
-            color: white;
-            vertical-align: bottom;
-            height: 100%;
-            color: #ffa31a;
-        }
-        .tTitle {
-            color: #ffa31a;
-        }
-        button {
-            background-color: #ffa31a;
-            height: 50px;
-            width: 200px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        input {
-            margin-top: 5px;
-            margin-bottom: 20px;
-        }
-        .topnav {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <style>
+        /***** Nav-Bar *****/
+        .nav-bar {
           background-color: #333;
           overflow: hidden;
           width: 100%;
           border-bottom: solid #808080;
         }
-        .topnav a {
+        .nav-bar a {
           float: left;
           color: #ffa31a;
           text-align: center;
@@ -52,15 +23,15 @@
           font-size: 17px;
           font-weight: bold;
         }
-        .topnav a:hover {
+        .nav-bar a:hover {
           background-color: #ffa31a;
           color: #1b1b1b;
         }
-        .topnav a.active {
+        .nav-bar a.active {
           background-color: #04AA6D;
           color: white;
         }
-        .webTitle {
+        .nav-title {
           display: inline-block;
           color: #ffa31a;
           text-align: center;
@@ -73,7 +44,8 @@
           border-left: solid #808080;
           display: flex;
         }
-        .footer {
+        /***** Footer *****/
+        .footer-config {
             position: fixed;
             left: 0;
             bottom: 0;
@@ -84,13 +56,28 @@
             text-align: center;
             border-top: solid #808080;
         }
-        .gitHubIcon{
+        .gitHub-icon{
             width: 20px;
             height: 20px;
             margin-right: 10px;
             margin-left: auto;
             float: right;
         }
+        /***** Page Background *****/
+        .page-display {
+            background-color: #1b1b1b;
+            color: white;
+            vertical-align: middle;
+        }
+        /***** Summary Text *****/
+        .summary {
+            color: #ffa31a;
+        }
+        /***** Titles *****/
+        .page-title {
+            color: #ffa31a;
+        }
+        /***** Images *****/
         .designImg,
         .itemListImg,
         .aboutImg {
@@ -114,44 +101,42 @@
             font-weight: bold;
             margin-top: 10px;
         }
-        .name-display {
-            margin-bottom: 10px;
-            color: #ffa31a;
-        }
-        </style>
+    </style>
 </head>
-<div class="topnav">
-    <div class="webTitle"> Clothing Warehouse </div>
-    <a th:href="@{/}">HOME</a>
-    <a th:href="@{/design}">DESIGN</a>
-    <a th:href="@{/itemList}">ITEM LIST</a>
-    <a th:href="@{/about}">ABOUT</a>
-</div>
-<body class="design">
-<div class="title-container d-flex flex-column align-items-center justify-content-center">
-    <h1 class="py-5">Welcome to the Clothing Warehouse!</h1>
-    <p>What would you like to do:</p>
-</div>
-<div class="image-container">
-<a th:href="@{/design}">
-        <img src="/images/pngs/design.png" alt="DesignPage" class="designImg">
-</a>
-</div>
-<a th:href="@{/itemList}">
-    <div class="image-container">
-        <img src="/images/pngs/itemList.png" alt="ItemListPage" class="itemListImg">
+
+    <div class="nav-bar">
+        <div class="nav-title"> Clothing Warehouse </div>
+        <a th:href="@{/}">HOME</a>
+        <a th:href="@{/design}">DESIGN</a>
+        <a th:href="@{/itemList}">ITEM LIST</a>
+        <a th:href="@{/about}">ABOUT</a>
     </div>
-</a>
-<a th:href="@{/about}">
-    <div class="image-container">
-        <img src="/images/pngs/about.png" alt="AboutPage" class="aboutImg">
+
+<body class="page-display">
+    <div class="title-container d-flex flex-column align-items-center justify-content-center">
+        <h1 class="page-title">Welcome to the Clothing Warehouse!</h1>
+        <p class="summary">What would you like to do:</p>
     </div>
-</a>
-<footer class="footer">
-    <p>&copy;2023 Clothing Warehouse. All rights reserved lol.</p>
-    <a href="https://github.com/SebastianMuzalewski/Clothing-Warehouse">
-        <img src="/images/pngs/github-icon.png" alt="GitHub" class="gitHubIcon">
+    <div class="image-container">
+        <a th:href="@{/design}">
+            <img src="/images/pngs/design.png" alt="DesignPage" class="designImg">
+        </a>
+    </div>
+    <a th:href="@{/itemList}">
+        <div class="image-container">
+            <img src="/images/pngs/itemList.png" alt="ItemListPage" class="itemListImg">
+        </div>
     </a>
-</footer>
-</body>
+    <a th:href="@{/about}">
+        <div class="image-container">
+            <img src="/images/pngs/about.png" alt="AboutPage" class="aboutImg">
+        </div>
+    </a>
+        <footer class="footer-config">
+            <p>&copy;2023 Clothing Warehouse. All rights reserved lol.</p>
+            <a href="https://github.com/SebastianMuzalewski/Clothing-Warehouse">
+                <img src="/images/pngs/github-icon.png" alt="GitHub" class="gitHub-icon">
+            </a>
+        </footer>
+    </body>
 </html>
