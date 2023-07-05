@@ -13,6 +13,7 @@
           overflow: hidden;
           width: 100%;
           border-bottom: solid #808080;
+          height: 57px;
         }
         .nav-bar a {
           float: left;
@@ -43,6 +44,31 @@
           border-right: solid #808080;
           border-left: solid #808080;
           display: flex;
+        }
+        .nav-login {
+            border-top: 1px solid #808080;
+        }
+        .nav-register {
+            border-bottom: 1px solid #808080;
+        }
+        .nav-squish {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+        .nav-register,
+        .nav-login {
+          border-left: solid #808080;
+          width: 80px;
+        }
+        .nav-login a,
+        .nav-register a {
+          display: flex;
+          width: 80px;
+          justify-content: center;
+          align-items: center;
+          height: 5px;
+          font-size: 10px;
         }
         /***** Footer *****/
         .footer-config {
@@ -99,6 +125,14 @@
         <a th:href="@{/design}">DESIGN</a>
         <a th:href="@{/itemList}">ITEM LIST</a>
         <a th:href="@{/about}">ABOUT</a>
+        <div class="nav-squish">
+            <span class="nav-register">
+                <a th:href="@{/register}">Register</a>
+            </span>
+            <span class="nav-login">
+                <a th:href="@{/login}">Login</a>
+            </span>
+        </div>
     </div>
 
 <body class="page-display">
