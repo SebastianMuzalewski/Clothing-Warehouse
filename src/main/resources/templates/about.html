@@ -1,39 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>About Page</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-            crossorigin="anonymous"
-    />
-    <title>About Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
     <style>
-        html, body {
-             min-height: 100%;
-        }
-        .design {
-            background-color: #1b1b1b;
-            color: white;
-            vertical-align: bottom;
-            height: 100%;
-        }
-        .validationError {
-            color: red;
-        }
-        .tTitle {
-            color: #ffa31a;
-        }
-        .topnav {
+        /***** Nav-Bar *****/
+        .nav-bar {
           background-color: #333;
           overflow: hidden;
           width: 100%;
           border-bottom: solid #808080;
         }
-        .topnav a {
+        .nav-bar a {
           float: left;
           color: #ffa31a;
           text-align: center;
@@ -42,15 +23,15 @@
           font-size: 17px;
           font-weight: bold;
         }
-        .topnav a:hover {
+        .nav-bar a:hover {
           background-color: #ffa31a;
           color: #1b1b1b;
         }
-        .topnav a.active {
+        .nav-bar a.active {
           background-color: #04AA6D;
           color: white;
         }
-        .webTitle {
+        .nav-title {
           display: inline-block;
           color: #ffa31a;
           text-align: center;
@@ -63,7 +44,8 @@
           border-left: solid #808080;
           display: flex;
         }
-        .footer {
+        /***** Footer *****/
+        .footer-config {
             position: fixed;
             left: 0;
             bottom: 0;
@@ -77,9 +59,26 @@
         .gitHubIcon{
             width: 20px;
             height: 20px;
+            margin-right: 10px;
+            margin-left: auto;
             float: right;
         }
-        .xqcDonoIcon{
+        /***** Page Background *****/
+        .page-display {
+            background-color: #1b1b1b;
+            color: white;
+            vertical-align: middle;
+        }
+        /***** Summary Text *****/
+        .summary{
+            font-size: 14px;
+            width: 500px;
+            margin-top: 100px;
+            margin-left: 350px;
+            color: #ffa31a;
+        }
+        /***** XQC positive gif *****/
+        .xqc-donation-gif{
             width: 480px;
             height: 365px;
             float: right;
@@ -94,48 +93,42 @@
             position: absolute;
             margin-right: 455px;
         }
-        .description{
-            font-size: 14px;
-            width: 500px;
-            margin-top: 100px;
-            margin-left: 350px;
-            color: #ffa31a;
-        }
-        .teamTitle{
+        /***** Team Section *****/
+        .team-intro{
             text-align: center;
             color: #ffa31a;
             margin-top: 75px;
         }
-        .imgContainer {
+        .img-container {
             display: flex;
             justify-content: center;
         }
-        .gitSeb {
+        .enclose-section-seb {
             margin: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .gitEilaf {
+        .enclose-section-eilaf {
             margin: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .gitSeb img {
+        .enclose-section-seb img {
             margin-right: 10px;
         }
 
-        .gitEilaf img {
+        .enclose-section-eilaf img {
             margin-right: 10px;
         }
-        .imgSeb {
+        .seb-icon {
             width: 150px;
             height: 150px;
             border: 2px solid orange;
             margin: 10px;
         }
-        .imgEilaf {
+        .eilaf-icon {
             width: 150px;
             height: 150px;
             border: 2px solid orange;
@@ -145,45 +138,49 @@
             margin-left: 10px;
             color: #ffa31a;
         }
-        </style>
+    </style>
 </head>
-<div class="topnav">
-    <div class="webTitle"> Clothing Warehouse </div>
-    <a th:href="@{/}">HOME</a>
-    <a th:href="@{/design}">DESIGN</a>
-    <a th:href="@{/itemList}">ITEM LIST</a>
-    <a th:href="@{/about}">ABOUT</a>
-</div>
-<body class="design">
-<section class="description">
-    <h1>Clothing Warehouse</h1>
-    <p>Welcome to Clothing Warehouse, your one-stop destination for stylish and affordable clothing.</p>
-    <p>Our mission is to provide high-quality clothing options for fashion enthusiasts at competitive prices. With a wide range of trendy styles, we cater to diverse tastes and preferences.</p>
-    <p>At Clothing Warehouse, we believe that fashion should be accessible to everyone. That's why we offer an extensive collection of clothing items for men, women, and children, ensuring that there's something for everyone in the family.</p>
-    <p>Our dedicated team of designers and stylists work tirelessly to curate the latest fashion trends and bring them to your wardrobe. We take pride in our commitment to quality and customer satisfaction.</p>
-    <p>Thank you for choosing Clothing Warehouse. We hope you enjoy your shopping experience and find the perfect outfits to express your unique style.</p>
-</section>
-<img src="/images/gifs/xqc-dono.gif" alt="GitHub" class="xqcDonoIcon">
-    <h5 class="teamTitle"><u>Meet the team:</u></h5>
-<section class="imgContainer">
-<div class="gitSeb">
-    <a href="https://github.com/SebastianMuzalewski">
-        <img src="/images/pngs/pikmin-icon.png" alt="SebsGitHub" class="imgSeb">
-    </a>
-    <h5 class="name-display">SEBASTIAN</h5>
-</div>
-<div class="gitEilaf">
-    <a href="https://github.com/Sniperplank">
-        <img src="/images/pngs/xqc-icon.png" alt="EilafsGitHub" class="imgEilaf">
-    </a>
-    <h5 class="name-display">EILAF</h5>
-</div>
-</section>
-<footer class="footer">
-    <p>&copy;2023 Clothing Warehouse. All rights reserved lol.</p>
-    <a href="https://github.com/SebastianMuzalewski/Clothing-Warehouse">
-        <img src="/images/pngs/github-icon.png" alt="GitHub" class="gitHubIcon">
-    </a>
-</footer>
-</body>
+
+    <div class="nav-bar">
+        <div class="nav-title"> Clothing Warehouse </div>
+        <a th:href="@{/}">HOME</a>
+        <a th:href="@{/design}">DESIGN</a>
+        <a th:href="@{/itemList}">ITEM LIST</a>
+        <a th:href="@{/about}">ABOUT</a>
+    </div>
+
+<body class="page-display">
+    <section class="summary">
+        <h1>Clothing Warehouse</h1>
+        <p>Welcome to Clothing Warehouse, your one-stop destination for stylish and affordable clothing.</p>
+        <p>Our mission is to provide high-quality clothing options for fashion enthusiasts at competitive prices. With a wide range of trendy styles, we cater to diverse tastes and preferences.</p>
+        <p>At Clothing Warehouse, we believe that fashion should be accessible to everyone. That's why we offer an extensive collection of clothing items for men, women, and children, ensuring that there's something for everyone in the family.</p>
+        <p>Our dedicated team of designers and stylists work tirelessly to curate the latest fashion trends and bring them to your wardrobe. We take pride in our commitment to quality and customer satisfaction.</p>
+        <p>Thank you for choosing Clothing Warehouse. We hope you enjoy your shopping experience and find the perfect outfits to express your unique style.</p>
+    </section>
+
+    <img src="/images/gifs/xqc-dono.gif" alt="GitHub" class="xqc-donation-gif">
+
+    <h5 class="team-intro"><u>Meet the team:</u></h5>
+    <section class="img-container">
+        <div class="enclose-section-seb">
+            <a href="https://github.com/SebastianMuzalewski">
+                <img src="/images/pngs/pikmin-icon.png" alt="SebsGitHub" class="seb-icon">
+            </a>
+            <h5 class="name-display">SEBASTIAN</h5>
+        </div>
+        <div class="enclose-section-eilaf">
+            <a href="https://github.com/Sniperplank">
+                <img src="/images/pngs/xqc-icon.png" alt="EilafsGitHub" class="eilaf-icon">
+            </a>
+            <h5 class="name-display">EILAF</h5>
+        </div>
+    </section>
+        <footer class="footer-config">
+            <p>&copy;2023 Clothing Warehouse. All rights reserved lol.</p>
+            <a href="https://github.com/SebastianMuzalewski/Clothing-Warehouse">
+                <img src="/images/pngs/github-icon.png" alt="GitHub" class="gitHubIcon">
+            </a>
+        </footer>
+    </body>
 </html>
