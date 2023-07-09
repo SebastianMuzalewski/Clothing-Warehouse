@@ -26,22 +26,26 @@
         .page-title {
             color: #ffa31a;
         }
+        /***** Error *****/
+        .validationError {
+            color: red;
+        }
     </style>
 </head>
-    <body class="page-display">
-        <div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
-            <h1 class="page-title">Login</h1>
-            <div th:if="${error}"> Unable to login. Check your username and password.</div>
-            <p>First time? click <a th:href="@{/register}">here</a> to register!</p>
-                <form method="POST" th:action="@{/login}" id="loginForm">
-                        <label class="form-label" for="username">Username: </label>
-                        <input class="form-control" type="text" name="username" id="username"/>
-                    <br/>
-                        <label class="form-label" for="password">Password: </label>
-                        <input class="form-control" type="password" name="password" id="password"/>
-                    <br/>
-                    <button type="submit" value="Login">Login</button>
-                </form>
-        </div>
-    </body>
+<body class="page-display">
+<div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
+    <h1 class="page-title">Login</h1>
+    <p>First time? click <a th:href="@{/register}">here</a> to register!</p>
+    <form method="POST" th:action="@{/login}" id="loginForm">
+        <label class="form-label" for="username">Username: </label>
+        <input class="form-control" type="text" name="username" id="username"/>
+        <br/>
+        <label class="form-label" for="password">Password: </label>
+        <input class="form-control" type="password" name="password" id="password"/>
+        <br/>
+        <button type="submit" value="Login">Login</button>
+    </form>
+    <div class="validationError" th:if="${error}"> Unable to login. Check your username and password.</div>
+</div>
+</body>
 </html>

@@ -189,7 +189,7 @@
             <button type="submit">Search</button>
         </form>
         <div class="btn-group mt-3">
-            <form class="m-0" method="post" action="/itemList">
+            <form class="m-0" method="post" th:action="@{/itemList}">
                 <button name="sortBy" value="name">Sort by Name</button>
                 <button name="sortBy" value="price">Sort by Price</button>
                 <button name="sortBy" value="brand">Sort by Brand</button>
