@@ -37,7 +37,14 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests()
                 .requestMatchers(toH2Console()).permitAll()
-                .requestMatchers("/design", "/itemList", "/about")
+                // User role with ADMIN can only access certain url pages
+                .requestMatchers("/admin/**")
+                .hasRole("ADMIN")
+                // User role with EMPLOYEE can only certain url pages
+                .requestMatchers("/add")
+                .hasRole("EMPLOYEES")
+                // User with basic role USER can only access these url pages
+                .requestMatchers("")
                 .hasRole("USER")
                 .anyRequest().permitAll()
                 .and()
@@ -47,15 +54,14 @@ public class SecurityConfig {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
-                .and()
-                .csrf()
-                .ignoringRequestMatchers(toH2Console())
-                .ignoringRequestMatchers("/design")
+
                 .and()
                 .headers()
                 .frameOptions()
                 .sameOrigin()
                 .and()
+                .csrf()
+                .disable()
                 .build();
     }
 }
