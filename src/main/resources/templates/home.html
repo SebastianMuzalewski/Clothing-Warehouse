@@ -130,23 +130,29 @@
     </style>
 </head>
 
-    <div class="nav-bar">
-        <div class="nav-title"> Clothing Warehouse </div>
-        <a th:href="@{/}">HOME</a>
-        <a th:href="@{/design}">DESIGN</a>
-        <a th:href="@{/itemList}">ITEM LIST</a>
-        <a th:href="@{/about}">ABOUT</a>
-        <div class="nav-squish">
-            <span class="nav-register">
-                <a th:href="@{/register}">Register</a>
-            </span>
-            <span class="nav-login">
-                <a th:href="@{/login}">Login</a>
-            </span>
+        <div class="nav-bar">
+            <div class="nav-title"> Clothing Warehouse </div>
+            <a th:href="@{/home}">HOME</a>
+            <a th:href="@{/design}">DESIGN</a>
+            <a th:href="@{/itemList}">ITEM LIST</a>
+            <div th:if="${hasRoleAdmin}">
+                <a th:href="@{/itemManagement}">MANAGE STOCK</a>
+            </div>
+            <a th:href="@{/about}">ABOUT</a>
+            <div class="nav-squish">
+                <span class="nav-register">
+                        <a th:href="@{/register}">Register</a>
+                </span>
+                <span class="nav-login">
+                        <a th:href="@{/login}">Login</a>
+                </span>
+            </div>
         </div>
-    </div>
 
 <body class="page-display">
+    <div th:if="${userRole}">
+        <div th:text="${userRole}"></div>
+    </div>
     <div class="title-container d-flex flex-column align-items-center justify-content-center">
         <h1 class="page-title">Welcome to the Clothing Warehouse!</h1>
         <p class="summary">What would you like to do:</p>

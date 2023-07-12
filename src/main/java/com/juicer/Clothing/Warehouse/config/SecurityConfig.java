@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers(toH2Console()).permitAll()
                 // User role with ADMIN can only access certain url pages
-                .requestMatchers("/admin/**")
+                .requestMatchers("/admin/**", "/itemManagement")
                 .hasRole("ADMIN")
                 // User role with EMPLOYEE can only certain url pages
                 .requestMatchers("/add")
@@ -53,7 +53,7 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/design", true)
                 .and()
                 .logout()
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/home")
 
                 .and()
                 .headers()

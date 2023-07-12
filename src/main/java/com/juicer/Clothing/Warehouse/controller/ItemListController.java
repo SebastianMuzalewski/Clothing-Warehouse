@@ -5,6 +5,8 @@ import com.juicer.Clothing.Warehouse.model.dto.ItemSearchByDateDto;
 import com.juicer.Clothing.Warehouse.repository.ItemRepositoryPaginated;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +31,11 @@ public class ItemListController {
     }
 
     @GetMapping
-    public String showItems(Model model){
+    public String itemList(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        boolean hasRoleAdmin = authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+        model.addAttribute("hasRoleAdmin", hasRoleAdmin);
         return "itemList";
     }
 
