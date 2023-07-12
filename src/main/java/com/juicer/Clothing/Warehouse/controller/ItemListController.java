@@ -33,9 +33,17 @@ public class ItemListController {
     @GetMapping
     public String itemList(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         boolean hasRoleAdmin = authentication != null && authentication.getAuthorities().stream()
                 .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
         model.addAttribute("hasRoleAdmin", hasRoleAdmin);
+
+        String userRole = null;
+        if (authentication != null && !authentication.getAuthorities().isEmpty()) {
+            userRole = authentication.getAuthorities().iterator().next().getAuthority();
+        }
+        model.addAttribute("userRole", userRole);
+
         return "itemList";
     }
 

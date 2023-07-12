@@ -6,12 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 @Controller
-@RequestMapping("/about")
-public class AboutController {
+@RequestMapping("/itemManagement")
+public class ItemManagementController {
+
     @GetMapping
-    public String about(Model model) {
+    public String itemManagement(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         boolean hasRoleAdmin = authentication != null && authentication.getAuthorities().stream()
@@ -24,6 +24,6 @@ public class AboutController {
         }
         model.addAttribute("userRole", userRole);
 
-        return "about";
+        return "itemManagement";
     }
 }

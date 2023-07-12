@@ -55,20 +55,33 @@
           display: flex;
           flex-direction: column;
           align-items: flex-end;
+          width: flex;
         }
-        .nav-register,
         .nav-login {
+          border-top: solid #808080;
           border-left: solid #808080;
-          width: 80px;
+          border-right: solid #808080;
+          padding-left: 1px;
+          padding-right: 1px;
+          width: 10%;
+          text-align: center;
         }
-        .nav-login a,
-        .nav-register a {
-          display: flex;
-          width: 80px;
-          justify-content: center;
-          align-items: center;
+        .nav-login a {
+          width: flex;
           height: 5px;
-          font-size: 10px;
+          width: 100%;
+          font-size: 13px;
+          line-height: 0.1;
+        }
+        .nav-role {
+          border-left: solid #808080;
+          border-right: solid #808080;
+          padding-left: 1px;
+          padding-right: 1px;
+          width: 10%;
+          text-align: center;
+          font-weight: bold;
+          color: #ffa31a;
         }
         /***** Footer *****/
         .footer-config {
@@ -113,6 +126,9 @@
             border-width: 2px
         }
         /***** Functionality *****/
+        .form-label{
+            color: #ffa31a;
+        }
         button {
             background-color: #ffa31a;
             height: 50px;
@@ -154,9 +170,9 @@
         </div>
         <a th:href="@{/about}">ABOUT</a>
         <div class="nav-squish">
-                <span class="nav-register">
-                    <a th:href="@{/register}">Register</a>
-                </span>
+            <div class="nav-role" th:if="${userRole}">
+                <div th:text="${userRole}"></div>
+            </div>
             <span class="nav-login">
                     <a th:href="@{/login}">Login</a>
                 </span>
