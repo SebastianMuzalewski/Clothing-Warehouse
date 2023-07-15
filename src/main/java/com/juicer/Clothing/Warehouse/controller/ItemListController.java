@@ -60,17 +60,7 @@ public class ItemListController {
         model.addAttribute("itemsByDateDto", new ItemSearchByDateDto());
     }
 
-//    @PostMapping
-//    public String searchItemsByDate(@ModelAttribute ItemSearchByDateDto itemsByDateDto, Model model) {
-//        var dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        model.addAttribute("items", itemRepository.findByNameStartsWithAndCreatedAtBetween(
-//                itemsByDateDto.getName(),
-//                LocalDate.parse(itemsByDateDto.getStartDate(), dateFormatter),
-//                LocalDate.parse(itemsByDateDto.getEndDate(), dateFormatter)));
-//        return "itemList";
-//    }
-
-    @PostMapping
+    @PostMapping("/search")
     public String searchItemsByBrandAndYear(
             @RequestParam("brand") Item.Brand brand,
             @RequestParam("year") int year,
@@ -81,7 +71,7 @@ public class ItemListController {
         return "itemList";
     }
 
-    @PostMapping("/")
+    @PostMapping("/pickSort")
     public String sortItems(@RequestParam("sortBy") String sortBy, Model model) {
         Page<Item> itemPage = null;
 
