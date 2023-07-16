@@ -68,6 +68,18 @@ public class ItemListController {
     ) {
         List<Item> items = itemRepository.findByBrandFromAndYearCreated(brand, year);
         model.addAttribute("items", items);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userRole = null;
+        if (authentication != null && !authentication.getAuthorities().isEmpty()) {
+            userRole = authentication.getAuthorities().iterator().next().getAuthority();
+        }
+        model.addAttribute("userRole", userRole);
+
+        boolean hasRoleAdmin = authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+        model.addAttribute("hasRoleAdmin", hasRoleAdmin);
+
         return "itemList";
     }
 
@@ -93,6 +105,17 @@ public class ItemListController {
         model.addAttribute("items", itemPage.getContent());
         model.addAttribute("currentPage", itemPage.getNumber());
         model.addAttribute("totalPages", itemPage.getTotalPages());
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userRole = null;
+        if (authentication != null && !authentication.getAuthorities().isEmpty()) {
+            userRole = authentication.getAuthorities().iterator().next().getAuthority();
+        }
+        model.addAttribute("userRole", userRole);
+
+        boolean hasRoleAdmin = authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+        model.addAttribute("hasRoleAdmin", hasRoleAdmin);
 
         return "itemList";
     }
@@ -131,6 +154,18 @@ public class ItemListController {
 
         model.addAttribute("items", itemPage.getContent());
         model.addAttribute("currentPage", itemPage.getNumber());
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userRole = null;
+        if (authentication != null && !authentication.getAuthorities().isEmpty()) {
+            userRole = authentication.getAuthorities().iterator().next().getAuthority();
+        }
+
+        model.addAttribute("userRole", userRole);
+
+        boolean hasRoleAdmin = authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+        model.addAttribute("hasRoleAdmin", hasRoleAdmin);
 
         return "itemList";
     }
