@@ -57,7 +57,7 @@
           align-items: flex-end;
           width: flex;
         }
-        .nav-login {
+        .nav-authenticating {
           border-top: solid #808080;
           border-left: solid #808080;
           border-right: solid #808080;
@@ -66,7 +66,7 @@
           width: 12%;
           text-align: center;
         }
-        .nav-login a {
+        .nav-authenticating a {
           width: flex;
           height: 5px;
           width: 100%;
@@ -124,8 +124,11 @@
         <div class="nav-role" th:if="${userRole}">
             <div th:text="${userRole}"></div>
         </div>
-        <span class="nav-login">
+        <span class="nav-authenticating" th:if="${userRole == null or userRole == 'ROLE_ANONYMOUS'}">
             <a th:href="@{/login}">Login</a>
+        </span>
+        <span class="nav-authenticating" th:unless="${userRole == null or userRole == 'ROLE_ANONYMOUS'}">
+            <a th:href="@{/logout}">Logout</a>
         </span>
     </div>
 </div>

@@ -36,32 +36,40 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests()
-                .requestMatchers(toH2Console()).permitAll()
-                // User role with ADMIN can only access certain url pages
-                .requestMatchers("/admin/**", "/itemManagement")
-                .hasRole("ADMIN")
-                // User role with EMPLOYEE can only certain url pages
-                .requestMatchers("/add")
-                .hasRole("EMPLOYEES")
-                // User with basic role USER can only access these url pages
-                .requestMatchers("")
-                .hasRole("USER")
-                .anyRequest().permitAll()
+                    .requestMatchers(toH2Console()).permitAll()
+                    // User role with ADMIN can only access certain url pages
+                    .requestMatchers("/admin/**", "/itemManagement")
+                    .hasRole("ADMIN")
+                    // User role with EMPLOYEE can only certain url pages
+                    .requestMatchers("/add")
+                    .hasRole("EMPLOYEES")
+                    // User with basic role USER can only access these url pages
+                    .requestMatchers("")
+                    .hasRole("USER")
+                    .anyRequest().permitAll()
+//                  .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/design", true)
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/design", true)
                 .and()
                 .logout()
-                .logoutSuccessUrl("/home")
-
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout")
+                    .invalidateHttpSession(true)
+                    .clearAuthentication(true)
+                    .deleteCookies("JSESSIONID")
+                    .logoutSuccessUrl("/home")
+                .and()
+                .exceptionHandling()
+                    .accessDeniedPage("/login")
                 .and()
                 .headers()
-                .frameOptions()
-                .sameOrigin()
+                    .frameOptions()
+                    .sameOrigin()
                 .and()
                 .csrf()
-                .disable()
+                    .disable()
                 .build();
     }
 }
