@@ -137,6 +137,14 @@
             font-weight: bold;
             margin-top: 20px;
         }
+        .delete-button {
+            background-color: #DC3545;
+            height: 40px;
+            width: 100px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
         input {
             margin-top: 5px;
             margin-bottom: 20px;
@@ -163,7 +171,9 @@
     <div class="nav-bar">
         <div class="nav-title"> Clothing Warehouse </div>
         <a th:href="@{/home}">HOME</a>
-        <a th:href="@{/design}">DESIGN</a>
+        <div th:if="${hasRoleAdmin}">
+            <a th:href="@{/design}">DESIGN</a>
+        </div>
         <a th:href="@{/itemList}">ITEM LIST</a>
         <div th:if="${hasRoleAdmin}">
             <a th:href="@{/itemManagement}">MANAGE STOCK</a>
@@ -190,6 +200,14 @@
                 <h6 class="card-subtitle mb-2" th:text="|Price: $${item.price} CAD|"></h6>
                 <h6 class="card-subtitle mb-2" th:text="|Brand: ${item.brandFrom}|"></h6>
                 <h6 class="card-subtitle mb-2" th:text="|Year Created: ${item.yearCreated}"></h6>
+                <div th:if="${hasRoleAdmin}">
+                    <form th:action="@{/itemList/delete}" method="post">
+                        <!-- Add a hidden input field to hold the item's ID -->
+                        <input type="hidden" name="id" th:value="${item.id}" />
+                        <!-- Add a button to trigger the delete operation -->
+                        <button class="delete-button" type="submit">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
