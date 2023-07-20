@@ -161,7 +161,7 @@
 
 <body class="page-display">
     <div class="d-flex align-items-center justify-content-center py-5">
-        <div>
+        <div th:if="${hasRoleAdmin}">
             <h1 class ="page-title">Add Item to Stock</h1>
             <form method="post" th:object="${item}">
                 <div th:if="${#fields.hasErrors()}">
