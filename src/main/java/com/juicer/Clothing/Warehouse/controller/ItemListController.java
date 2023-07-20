@@ -1,11 +1,14 @@
 package com.juicer.Clothing.Warehouse.controller;
 
 import com.juicer.Clothing.Warehouse.model.Item;
+import com.juicer.Clothing.Warehouse.model.User;
 import com.juicer.Clothing.Warehouse.model.dto.ItemSearchByDateDto;
 import com.juicer.Clothing.Warehouse.repository.ItemRepositoryPaginated;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -168,5 +171,11 @@ public class ItemListController {
         model.addAttribute("hasRoleAdmin", hasRoleAdmin);
 
         return "itemList";
+    }
+
+    @PostMapping("/delete")
+    public String deleteItem(@RequestParam("id") Long itemId) {
+        itemRepository.deleteById(itemId);
+        return "redirect:/itemList";
     }
 }

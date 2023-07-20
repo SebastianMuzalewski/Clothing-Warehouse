@@ -114,7 +114,9 @@
 <div class="nav-bar">
     <div class="nav-title"> Clothing Warehouse </div>
     <a th:href="@{/home}">HOME</a>
-    <a th:href="@{/design}">DESIGN</a>
+    <div th:if="${hasRoleAdmin}">
+        <a th:href="@{/design}">DESIGN</a>
+    </div>
     <a th:href="@{/itemList}">ITEM LIST</a>
     <div th:if="${hasRoleAdmin}">
         <a th:href="@{/itemManagement}">MANAGE STOCK</a>
