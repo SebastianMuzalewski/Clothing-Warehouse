@@ -20,10 +20,13 @@ public class HomeController {
         model.addAttribute("hasRoleAdmin", hasRoleAdmin);
 
         String userRole = null;
+        String username = null;
         if (authentication != null && !authentication.getAuthorities().isEmpty()) {
             userRole = authentication.getAuthorities().iterator().next().getAuthority();
+            username = authentication.getName();
         }
         model.addAttribute("userRole", userRole);
+        model.addAttribute("username", username);
 
         return "home";
     }

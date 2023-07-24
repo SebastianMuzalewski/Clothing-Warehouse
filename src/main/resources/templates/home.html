@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link rel="icon" href="/images/icons/home.ico" type="image/x-icon">
     <style>
         /***** Nav-Bar *****/
         .nav-bar {
@@ -111,32 +112,36 @@
             color: #ffa31a;
         }
         /***** Images *****/
-        .designImg,
-        .itemListImg,
-        .aboutImg {
-           float: left;
-           margin: 25px;
-           border: 5px solid orange;
-           border-radius: 10%;
-           width: 150px;
-           height: 150px;
-           transform: translateX(425%);
-        }
-        .itemListImg {
-          margin: 45px 25px 25px;
-        }
         .image-container {
-            text-align: center;
-            margin: 25px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 15px;
         }
-        .image-label {
+        .image-container img {
+            width: 150px;
+            height: auto;
+        }
+        .image-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 10px;
+        }
+        .image-text-title {
             color: #ffa31a;
             font-weight: bold;
-            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            margin-left: 10px;
+        }
+        .image-text-description {
+            color: #ffa31a;
+            text-align: center;
+            margin-left: 10px;
         }
     </style>
 </head>
-
         <div class="nav-bar">
             <div class="nav-title"> Clothing Warehouse </div>
             <a th:href="@{/home}">HOME</a>
@@ -160,27 +165,94 @@
                 </span>
             </div>
         </div>
-
 <body class="page-display">
     <div class="title-container d-flex flex-column align-items-center justify-content-center">
         <h1 class="page-title">Welcome to the Clothing Warehouse!</h1>
-        <p class="summary">What would you like to do:</p>
-    </div>
-    <div class="image-container">
-        <a th:href="@{/design}">
-            <img src="/images/pngs/design.png" alt="DesignPage" class="designImg">
-        </a>
-    </div>
-    <a th:href="@{/itemList}">
-        <div class="image-container">
-            <img src="/images/pngs/itemList.png" alt="ItemListPage" class="itemListImg">
+        <div th:if="${userRole == 'ROLE_ANONYMOUS'}">
+            <p class="summary">Please sign in to access more features.</p>
         </div>
-    </a>
-    <a th:href="@{/about}">
-        <div class="image-container">
-            <img src="/images/pngs/about.png" alt="AboutPage" class="aboutImg">
+        <div th:if="${userRole == 'ROLE_USER'}">
+            <p class="summary">Welcome <b><span th:text="${username}"></span></b>, What would you like to do today:</p>
+            <div class="image-container">
+                <a th:href="@{/itemList}">
+                    <img src="/images/pngs/itemList.png" alt="ItemListPage" class="itemListImg">
+                </a>
+                <div class="image-text-container">
+                    <span class="image-text-title">View our current items!</span>
+                    <span class="image-text-description">Click here to go to the Item List Page</span>
+                </div>
+            </div>
+            <div class="image-container">
+                <a th:href="@{/about}">
+                    <img src="/images/pngs/about.png" alt="AboutPage" class="aboutImg">
+                </a>
+                <div class="image-text-container">
+                    <span class="image-text-title">Want to learn more about us?</span>
+                    <span class="image-text-description">Click here to go to the About Page</span>
+                </div>
+            </div>
         </div>
-    </a>
+            <div th:if="${userRole == 'ROLE_EMPLOYEE'}">
+                <p class="summary">Welcome back <b><span th:text="${username}"></span></b>, What would you like to do today:</p>
+                <div class="image-container">
+                <a th:href="@{/itemList}">
+                    <img src="/images/pngs/itemList.png" alt="ItemListPage" class="itemListImg">
+                </a>
+                <div class="image-text-container">
+                    <span class="image-text-title">View our current items!</span>
+                    <span class="image-text-description">Click here to go to the Item List Page</span>
+                </div>
+                </div>
+                <div class="image-container">
+                <a th:href="@{/about}">
+                    <img src="/images/pngs/about.png" alt="AboutPage" class="aboutImg">
+                </a>
+                <div class="image-text-container">
+                    <span class="image-text-title">Want to learn more about us?</span>
+                    <span class="image-text-description">Click here to go to the About Page</span>
+                </div>
+                </div>
+            </div>
+        <div th:if="${userRole == 'ROLE_ADMIN'}">
+            <p class="summary">Welcome back <b><span th:text="${username}"></span></b>, What would you like to do today:</p>
+            <div class="image-container">
+                <a th:href="@{/design}">
+                    <img src="/images/pngs/design.png" alt="DesignPage" class="designImg">
+                </a>
+                <div class="image-text-container">
+                    <span class="image-text-title">Design some items!</span>
+                    <span class="image-text-description">Click here to go to the Design Page</span>
+                </div>
+            </div>
+            <div class="image-container">
+                <a th:href="@{/itemList}">
+                    <img src="/images/pngs/itemList.png" alt="ItemListPage" class="itemListImg">
+                </a>
+                <div class="image-text-container">
+                    <span class="image-text-title">View our current items!</span>
+                    <span class="image-text-description">Click here to go to the Item List Page</span>
+                </div>
+            </div>
+            <div class="image-container">
+                    <a th:href="@{/itemManagement}">
+                    <img src="/images/pngs/itemManagement.png" alt="ItemManagementPage" class="itemManagementImg">
+                </a>
+                <div class="image-text-container">
+                    <span class="image-text-title">Manage our items!</span>
+                    <span class="image-text-description">Click here to go to the Item Management Page</span>
+                </div>
+            </div>
+            <div class="image-container">
+                <a th:href="@{/about}">
+                    <img src="/images/pngs/about.png" alt="AboutPage" class="aboutImg">
+                </a>
+                <div class="image-text-container">
+                    <span class="image-text-title">Want to learn more about us?</span>
+                    <span class="image-text-description">Click here to go to the About Page</span>
+                </div>
+            </div>
+        </div>
+    </div>
         <footer class="footer-config">
             <p>&copy;2023 Clothing Warehouse. All rights reserved lol.</p>
             <a href="https://github.com/SebastianMuzalewski/Clothing-Warehouse">
