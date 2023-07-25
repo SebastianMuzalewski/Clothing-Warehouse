@@ -145,7 +145,7 @@
         <div class="nav-bar">
             <div class="nav-title"> Clothing Warehouse </div>
             <a th:href="@{/home}">HOME</a>
-            <div th:if="${hasRoleAdmin}">
+            <div th:if="${hasRoleAdmin || hasRoleEmp}">
                 <a th:href="@{/design}">DESIGN</a>
             </div>
             <a th:href="@{/itemList}">ITEM LIST</a>
@@ -194,6 +194,15 @@
         </div>
             <div th:if="${userRole == 'ROLE_EMPLOYEE'}">
                 <p class="summary">Welcome back <b><span th:text="${username}"></span></b>, What would you like to do today:</p>
+                <div class="image-container">
+                    <a th:href="@{/design}">
+                        <img src="/images/pngs/design.png" alt="DesignPage" class="designImg">
+                    </a>
+                    <div class="image-text-container">
+                        <span class="image-text-title">Design some items!</span>
+                        <span class="image-text-description">Click here to go to the Design Page</span>
+                    </div>
+                </div>
                 <div class="image-container">
                 <a th:href="@{/itemList}">
                     <img src="/images/pngs/itemList.png" alt="ItemListPage" class="itemListImg">
