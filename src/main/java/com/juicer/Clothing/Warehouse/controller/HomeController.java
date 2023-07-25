@@ -19,6 +19,10 @@ public class HomeController {
                 .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
         model.addAttribute("hasRoleAdmin", hasRoleAdmin);
 
+        boolean hasRoleEmp = authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(auth -> auth.getAuthority().equals("ROLE_EMPLOYEE"));
+        model.addAttribute("hasRoleEmp", hasRoleEmp);
+
         String userRole = null;
         String username = null;
         if (authentication != null && !authentication.getAuthorities().isEmpty()) {

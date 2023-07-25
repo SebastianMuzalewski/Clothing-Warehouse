@@ -172,7 +172,7 @@
     <div class="nav-bar">
         <div class="nav-title"> Clothing Warehouse </div>
         <a th:href="@{/home}">HOME</a>
-        <div th:if="${hasRoleAdmin}">
+        <div th:if="${hasRoleAdmin || hasRoleEmp}">
             <a th:href="@{/design}">DESIGN</a>
         </div>
         <a th:href="@{/itemList}">ITEM LIST</a>

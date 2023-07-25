@@ -139,7 +139,7 @@
     <div class="nav-bar">
         <div class="nav-title"> Clothing Warehouse </div>
         <a th:href="@{/home}">HOME</a>
-        <div th:if="${hasRoleAdmin}">
+        <div th:if="${hasRoleAdmin || hasRoleEmp}">
             <a th:href="@{/design}">DESIGN</a>
         </div>
         <a th:href="@{/itemList}">ITEM LIST</a>
@@ -162,7 +162,7 @@
 
 <body class="page-display">
     <div class="d-flex align-items-center justify-content-center py-5">
-        <div th:if="${hasRoleAdmin}">
+        <div th:if="${hasRoleAdmin || hasRoleEmp}">
             <h1 class ="page-title">Add Item to Stock</h1>
             <form method="post" th:object="${item}">
                 <div th:if="${#fields.hasErrors()}">
